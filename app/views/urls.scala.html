@@ -1,0 +1,12 @@
+@(urls: Seq[Url])
+
+@main("Every URL EVER"){
+    <p>Here are all the url's you ever typed.</p>
+    <ul>
+        @urls.map {url =>
+            <li>
+                @url.url
+            </li>
+        }
+    </ul>
+}
