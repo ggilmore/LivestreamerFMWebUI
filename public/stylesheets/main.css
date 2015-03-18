@@ -4,3 +4,8 @@ body{
     font-family: 'Open Sans', sans-serif;
     text-align: center;
 }
+
+.invalid{
+    text-decoration: line-through;
+    color: red;
+}

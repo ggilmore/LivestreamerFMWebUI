@@ -30,11 +30,15 @@ object StreamHandler{
   val actorReference:ActorRef = Akka.system.actorOf(Props[StreamHandler], "Handler")
   private val processMapping = TrieMap[String, StreamInformation]()
   def toJson : JsValue = Json.toJson(processMapping.values)
+  private val ANY_AVAILABLE_IP = "0.0.0.0"
+  private val DEFAULT_NETWORK_DELAY = "5000"
+  private val DEFAULT_CONFIGURATION_NAME = "livestreamerconfig.txt"
 }
 
-case class ProcessExitDetector(info:StreamInformation) extends Thread(new Runnable{
+
+case class LivestreamerFMProcessExitDetector(info:StreamInformation) extends Thread(new Runnable{
   def run(): Unit ={
-    info.process.exitValue
+    info.process.exitValue //blocks until the process exits, I don't care about the actual exit code @ the moment
     StreamHandler.actorReference ! DeleteURL(info.urlPath)
   }
 })
@@ -42,14 +46,17 @@ case class ProcessExitDetector(info:StreamInformation) extends Thread(new Runnab
 
 class StreamHandler extends Actor{
 
-  var id: Long = 0
+  var id: Long = 0 //TODO: not sure where I'll use this besides debugging yet. 
 
   def receive = {
     case GiveURL(path) =>{
         val freePort = Util.findOpenPort
         if (!StreamHandler.processMapping.keySet.contains(path)) {
-          val LSFMOptions = core.LSFMConfigOptions(core.OperatingSystem.getOS.getDefaultVLCLocation, "0.0.0.0:"+freePort,
-            "5000", Util.CURRENT_RUNNING_PATH)
+
+          val LSFMOptions = core.LSFMConfigOptions(core.OperatingSystem.getOS.getDefaultVLCLocation,
+            s"${StreamHandler.ANY_AVAILABLE_IP}:"+freePort, StreamHandler.DEFAULT_NETWORK_DELAY,
+            Util.CURRENT_RUNNING_PATH)
+
           core.Util.splitIpAndPort(LSFMOptions.ipAndPort) match {
             case Some((ip, port)) => {
               val livestreamerOptions = core.LSConfigOptions(vlcLocation = OperatingSystem.getOS.getDefaultVLCLocation,
@@ -57,16 +64,16 @@ class StreamHandler extends Actor{
               core.LivestreamerConfigFileWriter.writeNewConfigFile(livestreamerOptions)
 
               val processInfo = core.ArgParser.LiveStreamerProcessInfo(configLocation =
-                Util.CURRENT_RUNNING_PATH + "livestreamerconfig.txt", url = path,
+                Util.CURRENT_RUNNING_PATH + StreamHandler.DEFAULT_CONFIGURATION_NAME, url = path,
               ip = livestreamerOptions.ip , port = port,
                 audioOptionName = core.AudioSettings.getAudioSettingFromURL(path))
 
               core.ArgParser.createLiveStreamerProcess(processInfo) match {
                 case Right(process) => {
-                  id = id + 1
+                  id+=1
                   val info = StreamInformation(path, freePort, id, process)
                   StreamHandler.processMapping.putIfAbsent(path, info)
-                  ProcessExitDetector(info).start
+                  LivestreamerFMProcessExitDetector(info).start
                 }
                 case Left(err) => ???
              }
