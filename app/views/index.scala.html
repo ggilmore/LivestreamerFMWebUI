@@ -1,15 +1,25 @@
 @(userForm: Form[String])
 
+
 @import helper._
 
-@main("Welcome to Play") {
+@main("LivestreamerFM WebUI") {
 
-    <h1>Enter url.</h1>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400' rel='stylesheet' type='text/css'>
+
+    <h1>Enter the url of a stream to play.</h1>
+
     @form(routes.Application.submit){
         @inputText(userForm("url"))
-        <input type="submit" value="enter url here">
+        <input type="submit" value="Load HTTP Audio Stream">
     }
 
+    <div id="streamTableLocation"> </div>
 
+    <script src="@routes.Assets.at("javascripts/livestreamerfmwebuijscripts-fastopt.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+    main().main();
+    </script>
 
 }

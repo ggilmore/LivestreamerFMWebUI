@@ -1,12 +1,14 @@
-@(urls: Seq[Url])
+@(urls: Iterable[Util.StreamInformation])
+
+
 
 @main("Every URL EVER"){
     <p>Here are all the url's you ever typed.</p>
-    <ul>
+    <table id="streams">
         @urls.map {url =>
-            <li>
-                @url.url
-            </li>
+            <tr id = @url.uniqueID>
+                <td>@url.urlPath</td>
+                <td>@url.port</td>
         }
-    </ul>
+    </table>
 }
