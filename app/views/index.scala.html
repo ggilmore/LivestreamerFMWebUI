@@ -11,12 +11,15 @@
 
     @form(routes.Application.submit){
         @inputText(userForm("url"))
-        <input type="submit" value="Load HTTP Audio Stream">
+        <input type="submit" value="Create Audio Stream">
     }
+
+    <p id="legend"><span id="white"><strong>White </strong>= Currently Playing </span> / <span id="red"><strong>Red</strong> =
+        Not Playing or an Error Ocurred</span></p>
 
     <div id="streamTableLocation"> </div>
 
-    <script src="@routes.Assets.at("javascripts/livestreamerfmwebuijscripts-fastopt.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/livestreamerfmwebuijscripts-opt.js")" type="text/javascript"></script>
 
     <script type="text/javascript">
     main().main();

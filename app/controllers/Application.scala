@@ -39,9 +39,18 @@ object Application extends Controller {
   }
 
   def submit = Action { implicit request =>
-    val newUrl = userForm.bindFromRequest.get
-    StreamHandler.actorReference ! GiveURL(newUrl)
-    Redirect(routes.Application.index)
+
+    userForm.bindFromRequest.fold(
+      formWithErrors => {
+        // binding failure, you retrieve the form containing errors:
+        Redirect(routes.Application.index)
+      },
+      path => {
+        /* binding success, you get the actual value. */
+        StreamHandler.actorReference ! GiveURL(path)
+        Redirect(routes.Application.index)
+      }
+    )
 
   }
 

@@ -13,7 +13,8 @@ object StreamInformation {
     def writes(streamInfo: StreamInformation) = Json.obj(
       "urlPath" -> streamInfo.urlPath,
       "port" -> streamInfo.port,
-      "id" -> streamInfo.uniqueID
+      "id" -> streamInfo.uniqueID,
+      "errorOrEnded" -> streamInfo.hasError
     )
   }
 }

@@ -1,7 +1,7 @@
 package models
 
 
-import Util.{GiveURL, Util, GetAllUrls, StreamInformation, DeleteURL}
+import Util.{GiveURL, Util, StreamInformation, DeleteURL}
 
 import akka.actor.{Props, ActorRef, Actor}
 import core._
@@ -83,7 +83,7 @@ class StreamHandler extends Actor{
       }
     }
     case DeleteURL(path) => {
-      StreamHandler.processMapping.remove(path)
+      StreamHandler.processMapping(path).hasError = true
     }
 
 
