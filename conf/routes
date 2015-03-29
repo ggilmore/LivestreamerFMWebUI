@@ -12,4 +12,6 @@ POST        /                    controllers.Application.submit
 
 GET         /urls                controllers.Application.urls
 
-    
+GET         /errors              controllers.Application.errors
+
+POST        /clearStreams        controllers.Application.clear

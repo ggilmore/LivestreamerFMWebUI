@@ -9,13 +9,26 @@
 
     <h1>Enter the url of a stream to play.</h1>
 
-    @form(routes.Application.submit){
-        @inputText(userForm("url"))
-        <input type="submit" value="Create Audio Stream">
-    }
+    <form action="@routes.Application.submit" method ="post">
+        <input name="url" type="text">
+        <button>Create Audio Stream</button>
+    </form>
 
-    <p id="legend"><span id="white"><strong>White </strong>= Currently Playing </span> / <span id="red"><strong>Red</strong> =
-        Not Playing or an Error Ocurred</span></p>
+    <button onclick="clearTable()">Clear and Close All Streams</button>
+    <script>
+        function clearTable() {
+        $.post('@routes.Application.clear', true,
+        function () {
+             console.log("Streams cleared!");
+            location.reload();
+        }).fail(function () {
+            console.log("clearTable post request failed. :( ");
+        });
+        }
+    </script>
+
+    <p id="legend"><span id="white">LEGEND: <strong>White </strong>= Currently Playing </span> <br> <span id="red"><strong>Red</strong> =
+        Not Playing: either the stream ended or an error occured</span></p>
 
     <div id="streamTableLocation"> </div>
 

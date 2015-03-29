@@ -1,7 +1,7 @@
 package controllers
 
 
-import Util.GiveURL
+import Utilities.{ClearStreams, GiveURL}
 import models.StreamHandler
 import akka.actor.ActorRef
 import akka.util.Timeout
@@ -21,7 +21,7 @@ import scala.sys.Prop
 
 object Application extends Controller {
 
-  implicit val timeout = Timeout(2.second)
+  implicit val timeout = Timeout(3.second)
   implicit val ec = Akka.system.dispatcher
 
   var urlList:Vector[String] = Vector()
@@ -36,6 +36,11 @@ object Application extends Controller {
 
   def index = Action {
     Ok(views.html.index(userForm))
+  }
+
+  def clear = Action {
+    StreamHandler.actorReference ! ClearStreams
+    Redirect(routes.Application.index)
   }
 
   def submit = Action { implicit request =>
@@ -54,6 +59,7 @@ object Application extends Controller {
 
   }
 
+  def errors = Action{Ok(StreamHandler.getCurrentErrors.toString)}
 
 
 }
