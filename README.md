@@ -1,5 +1,7 @@
 # LivestreamerFMWebUI
  
+Download the latest release [here](https://github.com/ggilmore/LivestreamerFMWebUI/releases)!
+
 This is a web interface for [LivestreamerFM](www.github.com/ggilmore/livestreamerFM), written using [Scala Play](https://www.playframework.com/) and [Scala.js](http://www.scala-js.org/).
 
 ##Requirements
@@ -10,7 +12,7 @@ If you want to build this from source, you must download Scala Play, which you c
 
 ## Running LivestreamerFMWebUI:
 
-1. Download the `tgz` file, and extract it (either using your native system tools or some program like [7-Zip](http://www.7-zip.org/)).
+1. Download the `.tgz` file, and extract it (either using your native system tools or some program like [7-Zip](http://www.7-zip.org/)).
 
 2. Navigate to `EXTRACTED_FOLDER_NAME/bin/` and then: 
 
@@ -22,6 +24,8 @@ If you want to build this from source, you must download Scala Play, which you c
 
 ###Changing the Default Port #:
 By default, LivestreamerFMWebUI runs on port 9000. If you want to change that, either pass this argument: `-Dhttp.port=PORT_#_HERE` when running the start script, or create a configuration file called `LIVESTREAMERFMWEBUI_config.txt` in the same folder as the start script, and have it contain `-Dhttp.port=PORT_#_HERE`. For more information, see [this Stack Overflow Post](http://stackoverflow.com/questions/8205067/how-do-i-change-the-default-port-9000-that-play-uses-when-i-execute-the-run).
+
+Keep in mind that on Linux, [ports below 1024 can only be used by root](https://serverfault.com/questions/112795/how-can-i-run-a-server-on-linux-on-port-80-as-a-normal-user). 
 
 ## Using LivestreamerFMWebUI:
 
