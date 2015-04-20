@@ -38,9 +38,13 @@ You'll then see a page with a text box, the buttons `Create Audio Stream` and `C
 
 ###Example Usage:
 
-Say you wanted to create an audio stream from `twitch.tv/arteezy`. Just paste `twitch.tv/arteezy` into the text box, and click the `Create Audio Stream` button. Then, some entry like `twitch.tv/arteezy	48664` should appear in the table below. Then, use some program like [VLC](https://www.videolan.org/vlc/index.html) to play the audio stream located at `http://YOUR_MACHINE'S_IP_ADDRESS:48664` and listen to your heart's content. 
+Say you wanted to create an audio stream from `twitch.tv/arteezy`. Just paste `twitch.tv/arteezy` into the text box, and click the `Create Audio Stream` button. Then, some entry like `twitch.tv/arteezy	48664` should appear in the table below. Then, use some program like [VLC](https://www.videolan.org/vlc/index.html) to play the audio stream located at `http://YOUR_MACHINE'S_IP_ADDRESS:48664` and listen to your heart's content.
+
+
 
 ##TODO: 
+
+* publish [LivestreamerFM](www.github.com/ggilmore/livestreamerFM) to Maven or something, instead of a local repository so you can build this from source
 
 * figure out why pressing the `Create Audio Stream` sometimes throws an exception (the program still functions fine despite this, though)
 
