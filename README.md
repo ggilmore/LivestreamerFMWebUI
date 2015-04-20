@@ -26,7 +26,7 @@ By default, LivestreamerFMWebUI runs on port 9000. If you want to change that, e
 ## Using LivestreamerFMWebUI:
 
 LivestreamerFMWebUI binds to [any IPv6 address avaialable on your local machine](https://en.wikipedia.org/wiki/0.0.0.0). So, open up your web browser and navigate to:
-	YOUR_MACHINE'S_IP_ADDRESS:YOUR_SELECTED_PORT(OR_9000_BY_DEFAULT)
+	   YOUR_MACHINE'S_IP_ADDRESS:YOUR_SELECTED_PORT(OR_9000_BY_DEFAULT)
 
 You'll then see a page with a text box, the buttons `Create Audio Stream` and `Clear and Close All Streams`, and a table below with two columns: `STREAM URL` and `PORT #`.
 
