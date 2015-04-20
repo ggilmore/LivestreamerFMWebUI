@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>LivestreamerFMWebui by ggilmore</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/ggilmore/LivestreamerFMWebUI">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/ggilmore/LivestreamerFMWebUI/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/ggilmore/LivestreamerFMWebUI/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>LivestreamerFMWebui</h1>
+          <p>WebUI for LivestreamerFM</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/ggilmore">ggilmore</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="livestreamerfmwebui" class="anchor" href="#livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>LivestreamerFMWebui</h1>
+
+<p>This is a web interface for <a href="www.github.com/ggilmore/livestreamerFM">LivestreamerFM</a>, written using <a href="https://www.playframework.com/">Scala Play</a> and <a href="http://www.scala-js.org/">Scala.js</a>.</p>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>LivestreamerFMWebui shares all the same system and software prerequisites as LivestreamerFM, which you can view <a href="https://github.com/ggilmore/LivestreamerFM">here</a>. </p>
+
+<p>If you want to build this from source, you must download Scala Play, which you can find <a href="https://www.playframework.com/download">here</a>. </p>
+
+<h2>
+<a id="running-livestreamerfmwebui" class="anchor" href="#running-livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running LivestreamerFMWebui:</h2>
+
+<ol>
+<li><p>Download the <code>tgz</code> file, and extract it (either using your native system tools or some program like <a href="http://www.7-zip.org/">7-Zip</a>).</p></li>
+<li><p>Navigate to <code>EXTRACTED_FOLDER_NAME/bin/</code> and then: </p></li>
+</ol>
+
+<ul>
+<li><p>For Windows users, run the <code>.bat</code> file inside the folder, either by double clicking it, or via Command Prompt / Powershell with some command like <code>./livestreamerfmwebui.bat</code></p></li>
+<li><p>For Linux/OSX users, run the bash script file inside the folder with some command like: </p></li>
+</ul>
+
+<p><code>./livestreamerfmwebui</code></p>
+
+<h3>
+<a id="changing-the-default-port-" class="anchor" href="#changing-the-default-port-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing the Default Port #:</h3>
+
+<p>By default, LivestreamerFMWebui runs on port 9000. If you want to change that, either pass this argument: <code>-Dhttp.port=PORT_#_HERE</code> when running the start script, or create a configuration file called <code>LIVESTREAMERFMWEBUI_config.txt</code> in the same folder as the start script, and have it contain <code>-Dhttp.port=PORT_#_HERE</code>. For more information, see <a href="http://stackoverflow.com/questions/8205067/how-do-i-change-the-default-port-9000-that-play-uses-when-i-execute-the-run">this Stack Overflow Post</a>.</p>
+
+<h2>
+<a id="using-livestreamerfmwebui" class="anchor" href="#using-livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using LivestreamerFMWebui:</h2>
+
+<p>LivestreamerFMWebui binds to <a href="https://en.wikipedia.org/wiki/0.0.0.0">any IPv6 address avaialable on your local machine</a>. So, open up your web browser and navigate to:
+    YOUR_MACHINE'S_IP_ADDRESS:YOUR_SELECTED_PORT(OR_9000_BY_DEFAULT)</p>
+
+<p>You'll then see a page with a text box, the buttons <code>Create Audio Stream</code> and <code>Clear and Close All Streams</code>, and a table below with two columns: <code>STREAM URL</code> and <code>PORT #</code>.</p>
+
+<ul>
+<li><p>Paste the link that you want to play (the list of supported links are the same as <a href="https://github.com/ggilmore/LivestreamerFM">LivestreamerFM's</a>) into the text box, and click the <code>Create Audio Stream</code> button. This will create the audio stream, and a new entry will appear in the table. The <code>STREAM URL</code> shows the exact link that the server is generating the audio stream from, and the <code>PORT #</code> column is the port that the audio stream that LivestreamerFMWebui created is located at. </p></li>
+<li><p>The entry's row will be white if the generated audio stream is currently playing, or red if the stream has ended or if there was some issue when trying to create the stream (such as trying to play an unsupported link. The table will automatically update as more streams are created and the stream's status changes. </p></li>
+<li><p>If you want to close all the streams and clear all the entries from the table, press the <code>Clear and Close All Streams</code> button. </p></li>
+</ul>
+
+<h3>
+<a id="example-usage" class="anchor" href="#example-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Usage:</h3>
+
+<p>Say you wanted to create an audio stream from <code>twitch.tv/arteezy</code>. Just paste <code>twitch.tv/arteezy</code> into the text box, and click the <code>Create Audio Stream</code> button. Then, some entry like <code>twitch.tv/arteezy   48664</code> should appear in the table below. Then, use some program like <a href="https://www.videolan.org/vlc/index.html">VLC</a> to play the audio stream located at <code>http://YOUR_MACHINE'S_IP_ADDRESS:48664</code> and listen to your heart's content.</p>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODO:</h2>
+
+<ul>
+<li><p>publish <a href="www.github.com/ggilmore/livestreamerFM">LivestreamerFM</a> to Maven or something, instead of a local repository so you can build this from source</p></li>
+<li><p>figure out why pressing the <code>Create Audio Stream</code> sometimes throws an exception (the program still functions fine despite this, though)</p></li>
+<li><p>testing? I have no experience with doing this for a web application </p></li>
+<li><p>figure out how to hook into something like the gosugamer's api so that it's easy to new streams (no pasting of the link required).</p></li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
