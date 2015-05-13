@@ -39,22 +39,24 @@
         </div>
 
         <h1>
-<a id="livestreamerfmwebui" class="anchor" href="#livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>LivestreamerFMWebui</h1>
+<a id="livestreamerfmwebui" class="anchor" href="#livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>LivestreamerFMWebUI</h1>
+
+<p>Download the latest release <a href="https://github.com/ggilmore/LivestreamerFMWebUI/releases">here</a>!</p>
 
 <p>This is a web interface for <a href="www.github.com/ggilmore/livestreamerFM">LivestreamerFM</a>, written using <a href="https://www.playframework.com/">Scala Play</a> and <a href="http://www.scala-js.org/">Scala.js</a>.</p>
 
 <h2>
 <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
-<p>LivestreamerFMWebui shares all the same system and software prerequisites as LivestreamerFM, which you can view <a href="https://github.com/ggilmore/LivestreamerFM">here</a>. </p>
+<p>LivestreamerFMWebUI shares all the same system and software prerequisites as LivestreamerFM, which you can view <a href="https://github.com/ggilmore/LivestreamerFM">here</a>. </p>
 
 <p>If you want to build this from source, you must download Scala Play, which you can find <a href="https://www.playframework.com/download">here</a>. </p>
 
 <h2>
-<a id="running-livestreamerfmwebui" class="anchor" href="#running-livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running LivestreamerFMWebui:</h2>
+<a id="running-livestreamerfmwebui" class="anchor" href="#running-livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Running LivestreamerFMWebUI:</h2>
 
 <ol>
-<li><p>Download the <code>tgz</code> file, and extract it (either using your native system tools or some program like <a href="http://www.7-zip.org/">7-Zip</a>).</p></li>
+<li><p>Download the <code>.tgz</code> file, and extract it (either using your native system tools or some program like <a href="http://www.7-zip.org/">7-Zip</a>).</p></li>
 <li><p>Navigate to <code>EXTRACTED_FOLDER_NAME/bin/</code> and then: </p></li>
 </ol>
 
@@ -68,18 +70,20 @@
 <h3>
 <a id="changing-the-default-port-" class="anchor" href="#changing-the-default-port-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing the Default Port #:</h3>
 
-<p>By default, LivestreamerFMWebui runs on port 9000. If you want to change that, either pass this argument: <code>-Dhttp.port=PORT_#_HERE</code> when running the start script, or create a configuration file called <code>LIVESTREAMERFMWEBUI_config.txt</code> in the same folder as the start script, and have it contain <code>-Dhttp.port=PORT_#_HERE</code>. For more information, see <a href="http://stackoverflow.com/questions/8205067/how-do-i-change-the-default-port-9000-that-play-uses-when-i-execute-the-run">this Stack Overflow Post</a>.</p>
+<p>By default, LivestreamerFMWebUI runs on port 9000. If you want to change that, either pass this argument: <code>-Dhttp.port=PORT_#_HERE</code> when running the start script, or create a configuration file called <code>LIVESTREAMERFMWEBUI_config.txt</code> in the same folder as the start script, and have it contain <code>-Dhttp.port=PORT_#_HERE</code>. For more information, see <a href="http://stackoverflow.com/questions/8205067/how-do-i-change-the-default-port-9000-that-play-uses-when-i-execute-the-run">this Stack Overflow Post</a>.</p>
+
+<p>Keep in mind that on Linux, <a href="https://serverfault.com/questions/112795/how-can-i-run-a-server-on-linux-on-port-80-as-a-normal-user">ports below 1024 can only be used by root</a>. </p>
 
 <h2>
-<a id="using-livestreamerfmwebui" class="anchor" href="#using-livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using LivestreamerFMWebui:</h2>
+<a id="using-livestreamerfmwebui" class="anchor" href="#using-livestreamerfmwebui" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using LivestreamerFMWebUI:</h2>
 
-<p>LivestreamerFMWebui binds to <a href="https://en.wikipedia.org/wiki/0.0.0.0">any IPv6 address avaialable on your local machine</a>. So, open up your web browser and navigate to:
-    YOUR_MACHINE'S_IP_ADDRESS:YOUR_SELECTED_PORT(OR_9000_BY_DEFAULT)</p>
+<p>LivestreamerFMWebUI binds to <a href="https://en.wikipedia.org/wiki/0.0.0.0">any IPv6 address avaialable on your local machine</a>. So, open up your web browser and navigate to:
+       <code>YOUR_MACHINE'S_IP_ADDRESS:YOUR_SELECTED_PORT(OR_9000_BY_DEFAULT)</code></p>
 
 <p>You'll then see a page with a text box, the buttons <code>Create Audio Stream</code> and <code>Clear and Close All Streams</code>, and a table below with two columns: <code>STREAM URL</code> and <code>PORT #</code>.</p>
 
 <ul>
-<li><p>Paste the link that you want to play (the list of supported links are the same as <a href="https://github.com/ggilmore/LivestreamerFM">LivestreamerFM's</a>) into the text box, and click the <code>Create Audio Stream</code> button. This will create the audio stream, and a new entry will appear in the table. The <code>STREAM URL</code> shows the exact link that the server is generating the audio stream from, and the <code>PORT #</code> column is the port that the audio stream that LivestreamerFMWebui created is located at. </p></li>
+<li><p>Paste the link that you want to play (the list of supported links are the same as <a href="https://github.com/ggilmore/LivestreamerFM">LivestreamerFM's</a>) into the text box, and click the <code>Create Audio Stream</code> button. This will create the audio stream, and a new entry will appear in the table. The <code>STREAM URL</code> shows the exact link that the server is generating the audio stream from, and the <code>PORT #</code> column is the port that the audio stream that LivestreamerFMWebUI created is located at. </p></li>
 <li><p>The entry's row will be white if the generated audio stream is currently playing, or red if the stream has ended or if there was some issue when trying to create the stream (such as trying to play an unsupported link. The table will automatically update as more streams are created and the stream's status changes. </p></li>
 <li><p>If you want to close all the streams and clear all the entries from the table, press the <code>Clear and Close All Streams</code> button. </p></li>
 </ul>
